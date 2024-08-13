@@ -2,7 +2,17 @@
 
 import { useAppDispatch, useAppSelector } from "@/app/redux";
 import { setIsSidebarCollapsed } from "@/state";
-import { Archive, CircleDollarSign, Clipboard, Layout, LucideIcon, Menu, SlidersHorizontal, User } from "lucide-react";
+import {
+  Archive,
+  CircleDollarSign,
+  Clipboard,
+  Layout,
+  LucideIcon,
+  Menu,
+  SlidersHorizontal,
+  User,
+} from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -68,7 +78,13 @@ const Sidebar = () => {
           isSidebarCollapsed ? "px-5" : "px-8"
         }`}
       >
-        <div>Logo</div>
+        <Image
+          src={"https://s3-inventorymanagment.s3.eu-north-1.amazonaws.com/logo.png"}
+          alt="logo"
+          width={27}
+          height={27}
+          className="rounded-full w-8"
+        />
         <h1
           className={`font-extrabold text-2xl ${
             isSidebarCollapsed ? "hidden" : "block"
@@ -123,7 +139,7 @@ const Sidebar = () => {
         />
       </div>
 
-      <div className={`${isSidebarCollapsed ? "hidden": "block"} mb-10`}>
+      <div className={`${isSidebarCollapsed ? "hidden" : "block"} mb-10`}>
         <p className="text-center text-xs text-gray-500">&copy; 2024 Edstock</p>
       </div>
     </div>

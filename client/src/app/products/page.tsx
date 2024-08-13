@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import Header from "../(components)/Header";
 import Rating from "../(components)/Rating";
 import CreateProductModal from "./CreateProductModal";
+import Image from "next/image";
 
 type ProductFormData = {
   name: string;
@@ -24,7 +25,7 @@ function Products() {
     isError,
   } = useGetProductsQuery(searchTerm);
 
-  const [createProduct] = useCreateProductMutation()
+  const [createProduct] = useCreateProductMutation();
   const handleCreateProduct = async (productData: ProductFormData) => {
     await createProduct(productData);
   };
@@ -36,7 +37,6 @@ function Products() {
         Failed to fetch products{" "}
       </div>
     );
-
 
   return (
     <div className="mx-auto pb-5 w-full">
@@ -72,7 +72,15 @@ function Products() {
               className="border shadow rounded-md p-4 max-w-full w-full mx-auto"
             >
               <div className="flex flex-col items-center">
-                img
+                <Image
+                  src={`https://s3-inventorymanagment.s3.eu-north-1.amazonaws.com/product${
+                    Math.floor(Math.random() * 3) + 1
+                  }.png`}
+                  alt="product"
+                  width={150}
+                  height={150}
+                  className="rounded-2xl mb-3 w-36 h-36"
+                />
                 <h3 className="text-lg text-gray-900 font-semibold">
                   {product.name}
                 </h3>
